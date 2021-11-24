@@ -42,9 +42,9 @@ class RecursiveUtils:
     def cursor_turtle(self, line_):
         cursor = turtle.Turtle()
         cursor.pendown()
-        self.move_turtle(line_, cursor_=cursor)
+        # self.move_turtle(line_, cursor_=cursor)
         self.move_honeycomb(line_, cursor_=cursor)
-        self.draw_spiral(cursor_=cursor)
+        # self.draw_spiral(cursor_=cursor)
 
     # звезда
     def move_turtle(self, line_size, cursor_):
@@ -87,17 +87,17 @@ class RecursiveUtils:
         return self.fib_recursion(num-1) + self.fib_recursion(num-2)
 
     # Количество нулей в последовательности
-    def number_zeros_func(self, num):
+    def number_zeros_func(self, num, i=0):
         try:
+            if num % 10 == 0:
+                i = 1
             if num < 10:
-                return self.i
-            if not num % 10:
-                self.i += 1
+                return i
             num //= 10
-            self.number_zeros_func(num=num)
+            return i + self.number_zeros_func(num=num)
         except TypeError:
             print("only int")
-        return self.i
+        # return self.i
 
 
 rec = RecursiveUtils()
@@ -105,6 +105,6 @@ rec = RecursiveUtils()
 # print(rec.factorial(5))
 # print(rec.number_zeros("022300022"))
 # rec.cursor_turtle(25)
-print(rec.number_zeros_func("300500506"))
+print(rec.number_zeros_func(0))
 
-# input("Exit")
+input("Exit")

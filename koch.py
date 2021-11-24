@@ -5,6 +5,7 @@ cursor = turtle.Turtle()
 cursor.pendown()
 cursor.speed("fastest")
 
+
 def draw(l, n):
     if n == 0:
         cursor.left(180)
@@ -48,6 +49,6 @@ def koch_snowflake(line_: int, n_: int):
 
 # draw(400, 4)
 
-koch_snowflake(300, 0)
+koch_snowflake(200, 3)
 
 input("E")
