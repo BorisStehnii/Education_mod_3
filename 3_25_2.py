@@ -5,14 +5,7 @@ Checks if input string is Palindrome
 
 def is_palindrome(looking_str: str) -> bool:
     try:
-        if len(looking_str) % 2 and looking_str[0] == looking_str[-1]:
-            return is_palindrome(looking_str[1:-1])
-        elif len(looking_str) > 1 and looking_str[0] == looking_str[-1]:
-            return is_palindrome(looking_str[1:-1])
-        elif len(looking_str) <= 1:
-            return True
-        else:
-            return False
+        return len(looking_str) <= 1 or looking_str[0] == looking_str[-1] and is_palindrome(looking_str[1:-1])
     except TypeError:
         print("Only string")
 

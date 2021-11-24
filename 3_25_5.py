@@ -3,8 +3,7 @@ def sum_of_digits(digit_string: str) -> int:
         raise ValueError("input string must be digit string")
     if len(digit_string) == 1:
         return int(digit_string)
-    result = int(digit_string[0])
-    return result + sum_of_digits(digit_string[1:])
+    return int(digit_string[0]) + sum_of_digits(digit_string[1:])
 
 
 list_test = ['045', '566', 'v34']
