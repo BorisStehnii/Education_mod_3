@@ -49,6 +49,6 @@ def koch_snowflake(line_: int, n_: int):
 
 # draw(400, 4)
 
-koch_snowflake(200, 3)
+koch_snowflake(300, 2)
 
 input("E")
