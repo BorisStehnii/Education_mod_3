@@ -36,13 +36,14 @@ class QueueNew(Queue):
     def __init__(self):
         super().__init__()
 
-    def get_from_stack(self, item):
+    def get_from_queue(self, item):
         res = 0
+        temp = self.items
         for ind, x in enumerate(self.items):
             if x == item:
                 res = self.items.pop(ind)
         if res == 0:
-            raise ValueError("There is no element in this Stack")
+            raise ValueError("There is no element in this Queue")
         return res 
         
 
@@ -50,6 +51,7 @@ stack = StackNew()
 stack.push(3)
 stack.push(5)
 stack.push(7)
+stack.push(5)
 stack.get_from_stack(5)
 print(stack.items)
 
@@ -58,5 +60,5 @@ queue.enqueue('a')
 queue.enqueue('b')
 queue.enqueue('c')
 queue.enqueue('d')
-queue.get_from_stack('b')
+queue.get_from_queue('b')
 print(queue.items)
