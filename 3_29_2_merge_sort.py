@@ -22,7 +22,6 @@ def merge(left_list, right_list):
 
 
 def merge_sort(list_):
-    size = len(list_)
 
     while len(list_) > 1:
 
