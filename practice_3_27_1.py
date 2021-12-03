@@ -18,9 +18,12 @@ class LinkedList:
         self._head = new_node
 
     def append(self, data):
+
+        if not self._head:
+            self.add(data)
+            return
         new_node = Node(data)
         current = self._head
-
         while current:
             if not current.next:
                 new_node.next = current.next
@@ -28,7 +31,7 @@ class LinkedList:
                 break
             current = current.next
 
-    def insert(self, data, ind: int = 0):
+    def insert(self, data, ind: int = 0, ):
 
         if ind < 0:
             ind += self.size()
@@ -50,6 +53,8 @@ class LinkedList:
                 current = current.next
 
     def remove(self, data):
+        if not self._head:
+            return
         current = self._head
         while current:
             if self._head.data == data:
@@ -62,7 +67,7 @@ class LinkedList:
             current = current.next
 
     def pop(self, ind=-1):
-        res = 0
+
         i = 0
         current = self._head
         if ind < 0:
@@ -71,14 +76,13 @@ class LinkedList:
             if i == ind:
                 res = current.data
                 self._head = self._head.next
-                break
+                return res
             if i == ind - 1:
                 res = current.next.data
                 current.next = current.next.next
-                break
+                return res
             i += 1
             current = current.next
-        return res
 
     def search(self, data) -> bool:
         current = self._head
@@ -104,7 +108,7 @@ class LinkedList:
         while current:
             if current.data == data:
                 res = i
-                break
+                return res
             i += 1
             current = current.next
         return res
