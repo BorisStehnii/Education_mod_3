@@ -100,10 +100,10 @@ class LinkedList:
     def slice(self, start, stop):
         current = self._head
         i = 0
-        res_list = []
+        res_list = LinkedList()
         while current:
             if start <= i < stop:
-                res_list.append(current.data)
+                res_list.add(current.data)
             i += 1
             current = current.next
         return res_list

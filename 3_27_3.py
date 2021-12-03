@@ -9,22 +9,26 @@ class Queue:
     def __init__(self):
         self._head = None
 
-    def push(self, items):
-        new_node = Node(items)
-        temp = self._head
-        new_node.next = temp
-        self._head = new_node
+    def posh(self, data):
+        new_node = Node(data)
+        current = self._head
+
+        if not self._head:
+            new_node.next = current
+            self._head = new_node
+            return
+
+        while current:
+            if not current.next:
+                new_node.next = current.next
+                current.next = new_node
+                break
+            current = current.next
 
     def pop(self):
         current = self._head
-        res = None
-        while current:
-            if not current.next.next:
-                res = current.next.data
-                current.next = current.next.next
-                break
-            current = current.next
-        return res
+        self._head = self._head.next
+        return current
 
     def peek(self):
         current = self._head
