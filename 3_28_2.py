@@ -28,7 +28,7 @@ def fibonacci_search(li, len_li, value):
 
             start_offset = curr_li_ind          # обновление смещения старта
 
-        elif li[curr_li_ind] > value:   # смещения по списку фибоначи на одно значение в перед
+        elif li[curr_li_ind] > value:   # смещение по списку фибоначи на два значения в перед
             end = start
             middle = middle - start
             start = end - middle
