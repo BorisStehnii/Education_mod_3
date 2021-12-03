@@ -24,8 +24,6 @@ def fibonacci_search(li, len_li, value):
         if li[curr_li_ind] < value:
             end = middle            # смещение по списку фибоначи на одно значение в перед
             middle = start
-            start = end - middle
-
             start_offset = curr_li_ind          # обновление смещения старта
 
         elif li[curr_li_ind] > value:   # смещение по списку фибоначи на два значения в перед
