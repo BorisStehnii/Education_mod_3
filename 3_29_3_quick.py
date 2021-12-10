@@ -29,7 +29,7 @@ def insertion_sort(list_):
     return list_
 
 
-li_ = [randint(0, 1000) for _ in range(20000)]
+li_ = [randint(0, 1000) for _ in range(20003)]
 li_2 = li_1 = li_
 # print(li_1)
 start_time = time.time()
