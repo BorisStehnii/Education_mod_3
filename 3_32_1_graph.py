@@ -13,6 +13,9 @@ class Vertex:
         self.color = "white"
         self.prev_vertex = None
 
+        self.discovery_time = 0
+        self.closing_time = 0
+
     def add_adjacents(self, adj, weight: int = 0):
         self.adjacents[adj] = weight
 
@@ -40,6 +43,7 @@ class Graph:
         self.vertexes = {}
         self.graph_size = 0
         self.start_vertex = None
+        self.time = 0
 
     def add_vertex(self, key, value=None) -> Vertex:
         self.vertexes[key] = Vertex(key, value)
@@ -60,6 +64,24 @@ class Graph:
 
     def set_start_vertex(self, key):
         self.start_vertex = key
+
+    def dfs(self):
+        for vertex in self:
+            if vertex.color == "white":
+                self.dfs_visit(vertex)
+
+    def dfs_visit(self, start_vertex):
+        start_vertex.set_color("gray")
+        self.time = self.time + 1
+        start_vertex.discovery_time = self.time
+        for next_vertex in start_vertex.adjacents:
+            if next_vertex.color == "white":
+                next_vertex.set_prev_vertex(start_vertex)
+                self.dfs_visit(next_vertex)
+        start_vertex.set_color("black")
+        self.time = self.time + 1
+        start_vertex.cosing_time = self.time
+
 
     def bfs(self):
         if self.start_vertex:
@@ -92,28 +114,28 @@ class Graph:
         list_words = text.split()
         dict_comb = defaultdict(list)
 
-        # 
+        #
         for j in list_words:
             self.add_vertex(j)
             for i in range(len(j)):
 
-                key_simile = j[:i] + "_" + j[i+1:]
- 
-                if key_simile in dict_comb:
+                key = j[:i] + "_" + j[i+1:]
+
+                if key in dict_comb:
                     continue
 
                 for word in list_words:
                     word_r = word[:i] + "_" + word[i+1:]
-                    if key_simile == word_r:
-                        dict_comb[key_simile].append(word)
+                    if key == word_r:
+                        dict_comb[key].append(word)
 
-                if len(dict_comb[key_simile]) == 1:
-                    dict_comb.pop(key_simile)
+                if len(dict_comb[key]) == 1:
+                    dict_comb.pop(key)
         return dict_comb
 
     def build_graph_from_file(self, file_name: str):
         dict_key_word = self.creation_dict_from_file(file_name)
-        # print(dict_key_word)
+        print(dict_key_word)
         for list_comb_word in dict_key_word.values():
             star_ind = 1
             for j in list_comb_word:
